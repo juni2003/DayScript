@@ -8,54 +8,52 @@ A Django-based personal diary/journal web application for the Web Engineering co
 - **Project Type:** Complex Computing Project - Django Web Application
 - **Application:** Personal Diary / Journal
 
+
 ## ✨ Features
+- User registration, login, logout (Django auth)
+- Create, read, update, delete diary entries
+- Mood tracking with emojis
+- Tags (existing + add-new in form)
+- Search + filters (text, mood, date range, tag)
+- Sorting (title, date, mood) and pagination
+- Dashboard stats (total entries, tags, entries last 30 days, recent count)
+- Profile with mood distribution, tags list, recent entries
+- Admin interface for entries and tags
+- Responsive Bootstrap UI
 
-### Core Features
-- ✅ User Registration and Login (Django built-in authentication)
-- ✅ Create, Read, Update, Delete (CRUD) diary entries
-- ✅ Mood tracking with emoji indicators
-- ✅ Tag-based organization
-- ✅ Search functionality (by title and content)
-- ✅ Filter by mood, date range, and tags
-- ✅ User profile with statistics
-- ✅ Admin interface for data management
+## 🧱 Tech Stack
+- Python 3.12
+- Django 6.x
+- SQLite (default)
+- Bootstrap 5 (CDN)
 
-### Optional Enhancements
-- ✅ Advanced filtering (mood, date range, tags)
-- ✅ Search functionality
-- ✅ Responsive UI/UX design
-- ✅ Pagination for entries
-
-## 🛠️ Technology Stack
-
-- **Backend:** Django 5.x
-- **Database:** SQLite (default)
-- **Frontend:** HTML5, CSS3
-- **Authentication:** Django built-in auth system
-
-## 📁 Project Structure
-
+## 📂 Project Structure
 ```
-dayscript/
-├── dayscript/           # Project settings
-│   ├── settings.py
-│   ├── urls. py
-│   └── wsgi.py
-├── diary/               # Main application
-│   ├── migrations/
-│   ├── templates/diary/
-│   ├── admin.py
-│   ├── forms.py
-│   ├── models. py
-│   ├── urls.py
-│   └── views.py
-├── static/css/
-│   └── style.css
-├── templates/
-├── db.sqlite3
+Django_Web_Project_Dayscript/
 ├── manage.py
 ├── requirements.txt
-└── README.md
+├── db.sqlite3
+├── dayscript/
+│   ├── settings.py
+│   ├── urls.py
+│   └── ...
+├── diary/
+│   ├── models.py
+│   ├── views.py
+│   ├── forms.py
+│   ├── urls.py
+│   ├── templates/diary/
+│   │   ├── base.html
+│   │   ├── home.html
+│   │   ├── entry_detail.html
+│   │   ├── entry_form.html
+│   │   ├── entry_delete.html
+│   │   ├── login.html
+│   │   ├── register.html
+│   │   ├── profile.html
+│   │   └── about.html
+│   └── static/css/style.css
+└── ...
 ```
 
 ## 🚀 Setup Instructions
@@ -104,6 +102,7 @@ dayscript/
    - Admin panel:  http://127.0.0.1:8000/admin/
 
 ## 📍 URL Endpoints
+
 
 | URL | Description |
 |-----|-------------|
