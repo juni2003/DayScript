@@ -1,0 +1,83 @@
+{% extends 'diary/base.html' %}
+
+{% block title %}Profile - DayScript{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-lg-10 col-md-11">
+        <div class="card shadow-sm mb-4">
+            <div class="card-body">
+                <h1 class="h4 mb-2">👤 My Profile</h1>
+                <p class="text-muted mb-3">“Consistency in writing is not about perfection. It is about returning to yourself, again and again, through honest reflection.”</p>
+                <div class="d-flex flex-wrap align-items-center gap-3">
+                    <div>
+                        <div class="fw-bold">{{ user.username }}</div>
+                        <div class="text-muted small">{{ user.email }}</div>
+                        <div class="text-muted small">Member since: {{ user.date_joined|date:"F d, Y" }}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row g-3 mb-4">
+            <div class="col-md-3">
+                <div class="card shadow-sm h-100">
+                    <div class="card-body">
+                        <div class="text-muted small">Total Entries</div>
+                        <div class="fs-4 fw-bold">{{ total_entries }}</div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card shadow-sm h-100">
+                    <div class="card-body">
+                        <div class="text-muted small">Tags Used</div>
+                        <div class="fs-4 fw-bold">{{ user_tags.count }}</div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card shadow-sm h-100">
+                    <div class="card-body">
+                        <div class="text-muted small mb-2">Mood Distribution</div>
+                        {% if mood_stats %}
+                            {% for mood, count in mood_stats.items %}
+                                <span class="badge bg-secondary me-1 mb-1">{{ mood }}: {{ count }}</span>
+                            {% endfor %}
+                        {% else %}
+                            <span class="text-muted">No moods yet.</span>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        {% if user_tags %}
+        <div class="card shadow-sm mb-4">
+            <div class="card-body">
+                <div class="text-muted small mb-2">Your Tags</div>
+                {% for tag in user_tags %}
+                    <span class="badge bg-info text-dark me-1 mb-1">{{ tag.name }}</span>
+                {% endfor %}
+            </div>
+        </div>
+        {% endif %}
+
+        {% if recent_entries %}
+        <div class="card shadow-sm">
+            <div class="card-body">
+                <div class="text-muted small mb-2">Recent Entries</div>
+                <ul class="list-group list-group-flush">
+                    {% for entry in recent_entries %}
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        <a href="{% url 'entry_detail' entry.pk %}">{{ entry.title }}</a>
+                        <span class="text-muted small">{{ entry.created_at|date:"M d" }}</span>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

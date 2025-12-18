@@ -1,0 +1,42 @@
+{% extends 'diary/base.html' %}
+
+{% block title %}{{ form_title }} - DayScript{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-lg-8 col-md-10">
+        <div class="card shadow-sm">
+            <div class="card-body">
+                <h1 class="h3 mb-3">{{ form_title }}</h1>
+                <form method="POST">
+                    {% csrf_token %}
+                    {% for field in form %}
+                        <div class="mb-3">
+                            <label class="form-label" for="{{ field.id_for_label }}">{{ field.label }}</label>
+                            {{ field }}
+                            {% if field.help_text %}<div class="form-text">{{ field.help_text }}</div>{% endif %}
+                            {% if field.errors %}
+                                <div class="text-danger small">{{ field.errors.0 }}</div>
+                            {% endif %}
+                        </div>
+                    {% endfor %}
+
+                    <div class="mb-3">
+                        <label class="form-label" for="id_new_tags">Add New Tags</label>
+                        {{ form.new_tags }}
+                        {% if form.new_tags.help_text %}<div class="form-text">{{ form.new_tags.help_text }}</div>{% endif %}
+                        {% if form.new_tags.errors %}
+                            <div class="text-danger small">{{ form.new_tags.errors.0 }}</div>
+                        {% endif %}
+                    </div>
+
+                    <div class="d-flex gap-2">
+                        <button type="submit" class="btn btn-primary">{{ button_text }}</button>
+                        <a href="{% url 'home' %}" class="btn btn-outline-secondary">Cancel</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

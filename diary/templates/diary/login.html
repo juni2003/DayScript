@@ -1,0 +1,36 @@
+{% extends 'diary/base.html' %}
+
+{% block title %}Login - DayScript{% endblock %}
+
+{% block content %}
+<div class="auth-container">
+    <div class="auth-card">
+        <h1>📔 Login to DayScript</h1>
+        <p class="quote">“Fill your paper with the breathings of your heart.” — William Wordsworth</p>
+        
+        <form method="POST" class="auth-form">
+            {% csrf_token %}
+            
+            <div class="form-group">
+                <label for="id_username">Username</label>
+                <input type="text" name="username" id="id_username" class="form-control" required autofocus>
+            </div>
+
+            <div class="form-group">
+                <label for="id_password">Password</label>
+                <input type="password" name="password" id="id_password" class="form-control" required>
+            </div>
+
+            {% if form.errors %}
+            <div class="error-message">
+                Invalid username or password. Please try again.
+            </div>
+            {% endif %}
+
+            <button type="submit" class="btn btn-primary btn-full">Login</button>
+        </form>
+
+        <p class="auth-link">Don't have an account? <a href="{% url 'register' %}">Register here</a></p>
+    </div>
+</div>
+{% endblock %}

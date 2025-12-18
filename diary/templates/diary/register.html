@@ -1,0 +1,33 @@
+{% extends 'diary/base.html' %}
+
+{% block title %}Register - DayScript{% endblock %}
+
+{% block content %}
+<div class="auth-container">
+    <div class="auth-card">
+        <h1>📔 Join DayScript</h1>
+        <p class="quote">“Journal writing is a voyage to the interior.” — Christina Baldwin</p>
+        
+        <form method="POST" class="auth-form">
+            {% csrf_token %}
+            
+            {% for field in form %}
+            <div class="form-group">
+                <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+                {{ field }}
+                {% if field.errors %}
+                <span class="error">{{ field.errors.0 }}</span>
+                {% endif %}
+                {% if field.help_text %}
+                <small class="help-text">{{ field.help_text }}</small>
+                {% endif %}
+            </div>
+            {% endfor %}
+
+            <button type="submit" class="btn btn-primary btn-full">Create Account</button>
+        </form>
+
+        <p class="auth-link">Already have an account? <a href="{% url 'login' %}">Login here</a></p>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,24 @@
+{% extends 'diary/base.html' %}
+
+{% block title %}About - DayScript{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-lg-8 col-md-10">
+        <div class="card shadow-sm">
+            <div class="card-body">
+                <h1 class="h4 mb-3">About DayScript</h1>
+                <p>DayScript is a personal diary web app built with Django, featuring:</p>
+                <ul>
+                    <li>Secure user accounts (signup/login/logout)</li>
+                    <li>Full CRUD for diary entries</li>
+                    <li>Moods with emoji indicators and tag organization</li>
+                    <li>Search, filter, sort, and pagination</li>
+                    <li>Profile stats and admin management</li>
+                </ul>
+                <p class="mb-0 text-muted small">“Writing privately is an act of honesty. In a world that moves fast, a personal journal allows us to pause, reflect, and listen to our own voice without interruption.”</p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
