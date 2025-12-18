@@ -205,5 +205,5 @@ def profile(request):
         'recent_entries': recent_entries,
     }
     return render(request, 'diary/profile.html', context)
-def about(request):
+def about(request):  
     return render(request, 'diary/about.html')
