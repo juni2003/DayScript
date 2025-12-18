@@ -1,4 +1,4 @@
-# 📔 DayScript - Personal Diary Application
+﻿# 📔 DayScript - Personal Diary Application
 
 A Django-based personal diary/journal web application for the Web Engineering course project.
 
@@ -172,3 +172,4 @@ This project is created for educational purposes as part of the Web Engineering 
 **Developed by:** Junaid , Shayan and Arif 
 **Course:** Web Engineering  
 **Date:** December 2025
+
